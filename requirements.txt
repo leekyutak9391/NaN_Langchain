@@ -10,4 +10,3 @@ tiktoken
 openai
 pypdf
 loguru
-create_sql_agent
