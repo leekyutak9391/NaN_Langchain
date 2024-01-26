@@ -1,6 +1,8 @@
 #pysqlite3-binary
 langchain
-chromadb
+langchain_openai
+langchain_community
+langchain_core
 unstructured
 sentence-transformers
 faiss-cpu
@@ -8,4 +10,4 @@ tiktoken
 openai
 pypdf
 loguru
-#docx2txtp
+create_sql_agent
