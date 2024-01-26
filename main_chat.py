@@ -43,7 +43,7 @@ from langchain_community.vectorstores import FAISS
 from langchain.memory import StreamlitChatMessageHistory
 
 #DB관련
-import cx_Oracle
+#import cx_Oracle
 from sqlalchemy import create_engine
 from langchain.sql_database import SQLDatabase
 from langchain_experimental.sql import SQLDatabaseChain
