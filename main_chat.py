@@ -58,7 +58,7 @@ def main():
     page_title="운영리스크",
     #page_icon=":books:"
     )
-    OPENAI_API_KEY="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"
+    OPENAI_API_KEY="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"
     #os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
     #LOCATION = "D:\instantclient_18_5"
     #os.environ["PATH"] = LOCATION + ";" + os.environ["PATH"]
