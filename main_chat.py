@@ -58,7 +58,7 @@ def main():
     page_title="운영리스크",
     #page_icon=":books:"
     )
-    OPENAI_API_KEY='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'
+    OPENAI_API_KEY="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"
     #os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
     #LOCATION = "D:\instantclient_18_5"
     #os.environ["PATH"] = LOCATION + ";" + os.environ["PATH"]
@@ -178,7 +178,8 @@ def main():
                 else:
                     embeddings = get_embeddings()
                     convert_options = convert_option(options)
-                    save_url = "/faiss_db/orms/"+convert_options
+                    #save_url = "/faiss_db/orms/"+convert_options
+                    save_db_url = "https://raw.githubusercontent.com/leekyutak9391/NaN_Langchain/main/faiss/"
                     if convert_options == "los_data":
                         try:
                             llm = ChatOpenAI(openai_api_key=OPENAI_API_KEY, model_name = 'gpt-3.5-turbo',temperature=0)
@@ -217,7 +218,7 @@ def main():
                             st.markdown(response)
                     else:
                         try:
-                            vetorestore = FAISS.load_local(save_url,embeddings)
+                            vetorestore = FAISS.load_local(save_db_url,embeddings)
                             similarity_search = vetorestore.similarity_search_with_score(query) # 유사도 점수 출력 가능.
                             chain = get_conversation_chain(vetorestore,OPENAI_API_KEY)
                             result = chain({"question": query})
@@ -298,7 +299,8 @@ def get_vectorstore(text_chunks,options):
     embeddings = get_embeddings()
     convert_options = convert_option(options)
     vectordb = FAISS.from_documents(text_chunks, embeddings)
-    save_db_url = "/faiss_db/orms/"+convert_options
+    #save_db_url = "/faiss_db/orms/"+convert_options
+    save_db_url = "https://raw.githubusercontent.com/leekyutak9391/NaN_Langchain/main/faiss/"
     #st.write(save_db_url)
     vectordb.save_local(save_db_url)   #로컬에 저장할 수 있음. 참조 : https://www.youtube.com/watch?v=fE4SH2vEsdk&t=1061s
     return vectordb
