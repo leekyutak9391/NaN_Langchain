@@ -58,7 +58,7 @@ def main():
     page_title="운영리스크",
     #page_icon=":books:"
     )
-    #OPENAI_API_KEY="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"
+    OPENAI_API_KEY='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'
     #os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
     #LOCATION = "D:\instantclient_18_5"
     #os.environ["PATH"] = LOCATION + ";" + os.environ["PATH"]
@@ -126,7 +126,7 @@ def main():
             text_chunks = get_text_chunks(files_text)
             vetorestore = get_vectorstore(text_chunks,options)
 
-            st.session_state.conversation = get_conversation_chain(vetorestore,'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') 
+            st.session_state.conversation = get_conversation_chain(vetorestore,OPENAI_API_KEY) 
             st.markdown('''
             문서 업로드가 완료되었습니다.
             ''')
@@ -181,7 +181,7 @@ def main():
                     save_url = "/faiss_db/orms/"+convert_options
                     if convert_options == "los_data":
                         try:
-                            llm = ChatOpenAI(openai_api_key='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', model_name = 'gpt-3.5-turbo',temperature=0)
+                            llm = ChatOpenAI(openai_api_key=OPENAI_API_KEY, model_name = 'gpt-3.5-turbo',temperature=0)
                             #engine=create_engine(url, echo=True)
                         
                             #db=SQLDatabase.from_uri('oracle://langchain:nan1234@DESKTOP-5DMH5VA:1521/xe')  #로컬DB
@@ -219,7 +219,7 @@ def main():
                         try:
                             vetorestore = FAISS.load_local(save_url,embeddings)
                             similarity_search = vetorestore.similarity_search_with_score(query) # 유사도 점수 출력 가능.
-                            chain = get_conversation_chain(vetorestore,'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')
+                            chain = get_conversation_chain(vetorestore,OPENAI_API_KEY)
                             result = chain({"question": query})
                             #st.write(vetorestore)
                             #result_content = new_db.similarity_search_with_score(content,3)
