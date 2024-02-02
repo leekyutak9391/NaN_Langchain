@@ -182,7 +182,8 @@ def main():
                     save_db_url = "https://raw.githubusercontent.com/leekyutak9391/NaN_Langchain/main/faiss/"
                     if convert_options == "los_data":
                         try:
-                            llm = ChatOpenAI(openai_api_key=OPENAI_API_KEY, model_name = 'gpt-3.5-turbo',temperature=0)
+                            #llm = ChatOpenAI(openai_api_key=OPENAI_API_KEY, model_name = 'gpt-3.5-turbo',temperature=0)
+                            llm = ChatOpenAI(model_name = 'gpt-3.5-turbo',temperature=0)
                             #engine=create_engine(url, echo=True)
                         
                             #db=SQLDatabase.from_uri('oracle://langchain:nan1234@DESKTOP-5DMH5VA:1521/xe')  #로컬DB
@@ -306,7 +307,8 @@ def get_vectorstore(text_chunks,options):
     return vectordb
 
 def get_conversation_chain(vetorestore,openai_api_key):
-    llm = ChatOpenAI(openai_api_key=openai_api_key, model_name = 'gpt-3.5-turbo',temperature=0)
+    #llm = ChatOpenAI(openai_api_key=openai_api_key, model_name = 'gpt-3.5-turbo',temperature=0)
+    llm = ChatOpenAI(model_name = 'gpt-3.5-turbo',temperature=0)
     conversation_chain = ConversationalRetrievalChain.from_llm(
             llm=llm, 
             chain_type="stuff", 
