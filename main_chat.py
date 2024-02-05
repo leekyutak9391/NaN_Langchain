@@ -228,7 +228,7 @@ def main():
                             response = result['answer']
                             source_documents = result['source_documents']
                             #st.markdown(similarity_search)
-                            st.write(result)
+                            #st.write(result)
                             st.markdown(response)
                             #if similarity_search[]
                             with st.expander("참고 문서 확인"):
